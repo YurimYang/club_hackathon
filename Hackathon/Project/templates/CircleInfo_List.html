@@ -13,74 +13,34 @@
     <header>
         <nav class = 'nav-container'>
             <div class = 'item-container'>
-                <ul class = 'nav-item-left-container'>
-                  <li class = "nav-item margin-right"><a href="">Home</a></li>
-                </ul>
-  
-                <ul class = 'nav-item-right-container'>
-                  {% if user.is_authenticated %}
-                  <li class = "nav-item"><a href="">알림 <i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
-                  <li class = "nav-item"><a href="{%url 'myClub' %}">나의 동아리</a></li>
-                  <li class = "nav-item"><a href="{% url 'Logout' %}">로그아웃</a></li>
-                  {% else %}
-                  <li class = "nav-item margin-right"> <a href= "{% url 'Signup' %}">회원가입</a></li>
-                  <li class = "nav-item"><a href="{%url 'Login'%}">로그인</a></li>
-                  {% endif %}
-                </ul>
-              </div>
+              <ul class = 'nav-item-right-container'>
+                {% if user.is_authenticated %}
+                <li class = "nav-item"><a href="">알림 <i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+                <li class = "nav-item"><a href="{%url 'myClub' %}">나의 동아리</a></li>
+                <li class = "nav-item"><a href="{% url 'Logout' %}">로그아웃</a></li>
+                {% else %}
+                <li class = "nav-item margin-right"> <a href= "{% url 'Signup' %}">회원가입</a></li>
+                <li class = "nav-item"><a href="{%url 'Login'%}">로그인</a></li>
+                {% endif %}
+              </ul>
+            </div>
           </nav>
     </header>
     <div class="container">
         <div class="content">
+        {% for club in club_list %}
             <div class="list">
-                <div class="card">
-                    <a href="{% url 'CircleInfo_Detail' %}">멋쟁이 예수처럼</a>
-                    <p>기독교</p>
-                </div>
-                <div class="card">
-                    <a href="{% url 'CircleInfo_Detail' %}">I'm God</a>
-                    <p>천주교</p>
-                </div>
-                <div class="card">
-                    <a href="{% url 'CircleInfo_Detail' %}">나무아미타불</a>
-                    <p>불교</p>
-                </div>
+                {% for item in "x"|ljust:"3" %}
+                    <div class="card" href="{% url 'CircleInfo_Detail' club.id %}">
+                        <a class = "clubname" href="{% url 'CircleInfo_Detail' club.id %}">{{club.title}}</a>
+                        <br>
+                        <a href="{% url 'CircleInfo_Detail' club.id %}">{{club.body}}</a>
+                    </div>
+                {% endfor %}
             </div>
-            <div class="list">
-                <div class="card">
-                    <a href="{% url 'CircleInfo_Detail' %}">멋쟁이 예수처럼</a>
-                    <p>기독교</p>
-                </div>
-                <div class="card">
-                    <a href="{% url 'CircleInfo_Detail' %}">I'm God</a>
-                    <p>천주교</p>
-                </div>
-                <div class="card">
-                    <a href="{% url 'CircleInfo_Detail' %}">나무아미타불</a>
-                    <p>불교</p>
-                </div>
-            </div>
-            <div class="list">
-                <div class="card">
-                    <a href="{% url 'CircleInfo_Detail' %}">나는 힌두교</a>
-                    <p>힌두교</p>
-                </div>
-                <div class="card">
-                    <a href="{% url 'CircleInfo_Detail' %}">Jesus Loves Me</a>
-                    <p>기독교</p>
-                </div>
-            </div>
+        {% endfor %}
         </div>
     </div>
 </body>
-<!-- <script>
-    var list = '';
-    for (var i = 0; i < 3; i++) { 
-        list += '<div class="list">'
-        for(var j = 0; j< 3;  j++){
-            list += '<div class="card"><a href="">멋쟁이 예수처럼</a><p>기독교</p></div>'
-        }  
-    }
-    document.getElementById("content").innerHTML = list;
-</script> -->
+
 </html>

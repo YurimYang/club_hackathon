@@ -32,10 +32,11 @@
         </nav>
     </header>
     <div class = 'container'>
-      <div class = 'search'>
-          <input type = "text" placeholder="학교명 검색">
-          <button><i class="fas fa-search" aria-hidden="true"></i></button>
-      </div>
+      <form class = "search" method="POST" action="{% url 'Matching_Apply' %}">
+        {% csrf_token %}
+        <input type = "text" placeholder="학교 명 검색">
+        <button type = "submit"><i class="fas fa-search"  aria-hidden="true"></i></button>
+      </form>
   </div>
     </div>
 </body>

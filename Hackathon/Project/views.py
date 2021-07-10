@@ -23,10 +23,14 @@ def CircleInfo_Volunteer(request):
     return render(request,"CircleInfo_Volunteer.html")
 
 def CircleInfo_List(request):
-    return render(request,"CircleInfo_List.html")
+    club_list = Club.objects.all()       
+    return render(request,"CircleInfo_List.html", {'club_list':club_list})
 
-def CircleInfo_Detail(request):
-    return render(request,"CircleInfo_Detail.html")
+
+
+def CircleInfo_Detail(request , club_id):  
+    club_detail = Club.objects.get(id = club_id) 
+    return render(request,"CircleInfo_Detail.html" , {'club':club_detail})
 
 def Register(request):
     club=Club()

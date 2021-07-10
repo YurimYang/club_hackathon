@@ -11,30 +11,31 @@
 </head>
 <body>
     <header>
-        <nav class = 'nav-container'>
-          <div class = 'item-container'>
-            <ul class = 'nav-item-left-container'>
-              <li class = "nav-item margin-right"><a href="">Home</a></li>
-            </ul>
-            <ul class = 'nav-item-right-container'>
-              {% if user.is_authenticated %}
-              <li class = "nav-item"><a href="">알림 <i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
-              <li class = "nav-item"><a href="{%url 'myClub' %}">나의 동아리</a></li>
-              <li class = "nav-item"><a href="{% url 'Logout' %}">로그아웃</a></li>
-              {% else %}
-              <li class = "nav-item margin-right"> <a href= "{% url 'Signup' %}">회원가입</a></li>
-              <li class = "nav-item"><a href="{%url 'Login'%}">로그인</a></li>
-              {% endif %}
-            </ul>
-          </div>
-        </nav>
+      <nav class = 'nav-container'>
+        <div class = 'item-container'>
+          <ul class = 'nav-item-left-container'>
+            <li class = "nav-item margin-right"><a href="">Home</a></li>
+          </ul>
+
+          <ul class = 'nav-item-right-container'>
+            {% if user.is_authenticated %}
+            <li class = "nav-item"><a href="">알림 <i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+            <li class = "nav-item"><a href="{%url 'myClub' %}">나의 동아리</a></li>
+            <li class = "nav-item"><a href="{% url 'Logout' %}">로그아웃</a></li>
+            {% else %}
+            <li class = "nav-item margin-right"> <a href= "{% url 'Signup' %}">회원가입</a></li>
+            <li class = "nav-item"><a href="{%url 'Login'%}">로그인</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
     </header>
     <div class = 'container'>
-        <div class = 'search'>
-            <input type = "text" placeholder="동아리명 검색">
-            <button><i class="fas fa-search" aria-hidden="true"></i></button>
-        </div>
+      <form class = "search" method="POST" action="">
+        {% csrf_token %}
+        <input type = "text" placeholder="동아리명 검색">
+        <button type = "submit"><i class="fas fa-search"  aria-hidden="true"></i></button>
+      </form>
     </div>
-    </div> 
 </body>
 </html>
