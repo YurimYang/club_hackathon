@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/CircleInfo_LiberalArts.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>인문</title>
+</head>
+<body>
+    <header>
+        <nav class = 'nav-container'>
+          <div class = 'item-container'>
+            <ul class = 'nav-item-left-container'>
+              <li class = "nav-item margin-right"><a href="">Home</a></li>
+            </ul>
+
+            <ul class = 'nav-item-right-container'>
+              {% if user.is_authenticated %}
+              <li class = "nav-item"><a href="">알림 <i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+              <li class = "nav-item"><a href="{%url 'myClub' %}">나의 동아리</a></li>
+              <li class = "nav-item"><a href="{% url 'Logout' %}">로그아웃</a></li>
+              {% else %}
+              <li class = "nav-item margin-right"> <a href= "{% url 'Signup' %}">회원가입</a></li>
+              <li class = "nav-item"><a href="{%url 'Login'%}">로그인</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="content">
+            <div class="box"><a href="{% url 'CircleInfo_List' %}">종교</a></div>
+            <div class="box"><a href="{% url 'CircleInfo_List' %}">학술</a></div>
+            <div class="box"><a href="{% url 'CircleInfo_List' %}">미디어</a></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/Matching_Apply.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Detail</title>
+</head>
+<body>
+    <header>
+        <nav class = 'nav-container'>
+            <div class = 'item-container'>
+                <ul class = 'nav-item-left-container'>
+                  <li class = "nav-item margin-right"><a href="">Home</a></li>
+                </ul>
+  
+                <ul class = 'nav-item-right-container'>
+                  {% if user.is_authenticated %}
+                  <li class = "nav-item"><a href="">알림 <i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+                  <li class = "nav-item"><a href="{%url 'myClub' %}">나의 동아리</a></li>
+                  <li class = "nav-item"><a href="{% url 'Logout' %}">로그아웃</a></li>
+                  {% else %}
+                  <li class = "nav-item margin-right"> <a href= "{% url 'Signup' %}">회원가입</a></li>
+                  <li class = "nav-item"><a href="{%url 'Login'%}">로그인</a></li>
+                  {% endif %}
+                </ul>
+              </div>
+          </nav>
+    </header>
+    <div class="container">
+        <div class="content">
+        {% comment %} action="{% url '' %}" {% endcomment %}
+            <form class="form" method ="GET">
+                <h1>매칭 신청</h2>
+                <div class="basicInfo">
+                    <div class="textInfo">
+                        <div class="column">
+                            <h3>매칭 대상 동아리</h3>
+                            <h4>멋쟁이 예수처럼</h4>
+                            <h3>매칭 희망 날짜</h3>
+                            <input type='date' id ="currentDate" name='match_date'/>
+                            <h3>대표 연락처</h3>
+                            <input name="contact" type="text" placeholder="대표 연락처" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="image">
+                        <img src="../../static/img/field.jpg" width= "200px" height = "200px">
+                    </div>
+                </div>
+                <div class="SpecificInfo">
+                    <h3>신청 내용</h3>
+                    <textarea name="body" cols="100" rows="10"></textarea>
+                </div>
+                <div class="button">
+                    <input class = "matching" type="submit" value="매칭 신청">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
+  </script>
+</html>

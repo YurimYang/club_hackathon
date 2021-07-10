@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/Signup.css' %}">
+    <title>Signup</title>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="signup_background">
+                <img src="{% static 'img/leaf.jpg' %}" width="100%" height="1080px">
+            </div>
+            <div class="signup_form">
+                <h2>회원가입</h2>
+                <form class = "signup" method="POST" action="">
+                    {% csrf_token %}
+                    {% if error %}
+                        <p>{{error}}</p>
+                        <br>
+                    {% endif %}
+                    <input class = "input"  name="username" type="text" placeholder="아이디를 입력해주세요" autocomplete="off">
+                    <input class = "input" name="password" type="password" placeholder="비밀번호를 입력해주세요" autocomplete="off">
+                    <input class = "input" name="password_check" type="password" placeholder="비밀번호를 확인해주세요" autocomplete="off">
+                    <input class = "input" name="name" type="text" placeholder="성함을 입력해주세요" autocomplete="off">
+                    <input class = "signupbutton" type="submit" value="회원가입">
+                    
+
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

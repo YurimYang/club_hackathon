@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/myClub.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>MyClub</title>
+</head>
+<body>
+    <header>
+        <nav class = 'nav-container'>
+            <div class = 'item-container'>
+              <ul class = 'nav-item-right-container'>
+                {% if user.is_authenticated %}
+                <li class = "nav-item"><a href="">알림 <i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+                <li class = "nav-item"><a href="{%url 'myClub' %}">나의 동아리</a></li>
+                <li class = "nav-item"><a href="">로그아웃</a></li>
+                {% else %}
+                <li class = "nav-item margin-right"><a href="">회원가입</a></li>
+                <li class = "nav-item"><a href="">로그인</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </nav>
+    </header>
+    <div class="container">
+        <div class="content">
+            <div class="form">
+                <h2>멋쟁이 예수처럼</h2>
+                <div class="basicInfo">
+                    <div class="textInfo">
+                        <div class="column">
+                            <div class="field">
+                                <p>종교 : 기독교</p>
+                            </div>
+                            <div class="contact">
+                                <p>연락처 : 01022223333</p>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="owner">
+                                <p>회장 : 박재욱</p>
+                            </div>
+                            <div class="email">
+                                <p>email : jaewook@naver.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image">
+                        <img src="../../static/img/field.jpg" width= "200px" height = "200px">
+                    </div>
+                </div>
+                <div class="SpecificInfo">
+                    <h3>동아리 소개</h3>
+                    <p>저희 동아리는 어쩌구 저쩌구 ㅣ남ㄹ어ㅣ;ㄻㄴ아ㅓㅣㅏㄴㄹㅇ머ㅣ;ㄴ망러;ㅏㅣㅁㄴㅇㄹ
+                        sadflfsdasfadddddddddddddddddddddddddd;lkjdflksjdflkafsdj;lkjasdflkjsfda
+                        asdl;kfjsfadlk;jdfsal;kjdsfakl;jsadfkl;ja;skdflj;aklsdfj;klsadf
+                        sdaflk;ajsdflk;ajsfdlk;asjdfkl;asdjfkl;asdfjkldfsa
+                        asfdlk;adjfskl;adfsjl;sadfjfasdkljasdfl
+                        sdaflk
+                        sdaflk
+                        <br>
+                        sdaflkfsd
+                        fsd
+                        sdaflksdf
+                        sdaflksdf
+                        sdaflkfsd
+                        sdf
+                    </p>
+                </div>
+                <div class="button">
+                    <button class="matching" onclick="location.href='{% url 'myClubEdit' %}'" >수정</button>
+                    <button class="matching" onclick="location.href='{% url 'main' %}'" >닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

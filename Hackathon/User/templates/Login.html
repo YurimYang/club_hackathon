@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/Login.css' %}">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="login_background">
+                <img src="{% static 'img/leaf.jpg' %}" width="100%" height="1080px">
+            </div>
+            <div class="login_form">
+                <h2>로그인</h2>
+                <form class = "login" method="POST" action="">
+                    {% csrf_token %}
+                    {% if error %}
+                        <p>{{error}}</p>
+                        <br>
+                    {% endif %}
+                    <input class = "input"  name="username" type="text" placeholder="아이디" autocomplete="off">
+                    <input class = "input" name="password" type="password" placeholder="비밀번호" autocomplete="off">
+                    <input class = "loginbutton" type="submit" value="로그인">
+                </form>
+                <div class = "find_signup">
+                    <a class="text" href="">아이디 찾기</a>
+                    <a class="text" href="">비밀번호 찾기</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/myClubEdit.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Edit</title>
+</head>
+<body>
+    <header>
+        <nav class = 'nav-container'>
+            <div class = 'item-container'>
+              <ul class = 'nav-item-right-container'>
+                {% if user.is_authenticated %}
+                <li class = "nav-item"><a href="">알림 <i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+                <li class = "nav-item"><a href="">나의 동아리</a></li>
+                <li class = "nav-item"><a href="">로그아웃</a></li>
+                {% else %}
+                <li class = "nav-item margin-right"><a href="">회원가입</a></li>
+                <li class = "nav-item"><a href="">로그인</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </nav>
+    </header>
+    <div class="container">
+        <div class="content">
+            <form action ="{%url 'myClub' %}" class="form" method ="POST">
+                {% csrf_token %}
+                <h2>멋쟁이 예수처럼</h2>
+                <div class="basicInfo">
+                    <div class="textInfo">
+                        <div class="column">
+                            <div class="field">
+                                <p>분야</p>
+                                <input name="field" type="text" placeholder="분야" autocomplete="off">
+                            </div>
+                            <div class="contact">
+                                <p>연락처</p>
+                                <input name="phone" type="text" placeholder="연락처" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="owner">
+                                <p>회장 이름</p>
+                                <input name="owner" type="text" placeholder="회장 이름" autocomplete="off">
+                            </div>
+                            <div class="email">
+                                <p>이메일</p>
+                                <input name="email" type="text" placeholder="연락처" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image">
+                        <img src="../../static/img/field.jpg" width= "200px" height = "200px">
+                    </div>
+                </div>
+                <div class="SpecificInfo">
+                    <h3>동아리 소개</h3>
+                    <textarea name="body" cols="100" rows="10"></textarea>
+                </div>
+                <div class="button">
+                    <button class="matching" onclick="location.href=''">수정</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
